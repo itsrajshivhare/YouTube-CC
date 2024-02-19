@@ -2,7 +2,6 @@ import React from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { Link } from "react-router-dom";
 
 const Head = () => {
   const dispatch = useDispatch();

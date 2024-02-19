@@ -15,7 +15,6 @@ const VideoCard = ({ info }) => {
   if (!info) {
     return <div>No video information available.</div>;
   }
-  console.log(info);
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails, publishedAt } = snippet;
 
