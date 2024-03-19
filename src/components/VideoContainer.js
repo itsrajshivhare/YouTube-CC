@@ -11,10 +11,14 @@ const VideoContainer = () => {
   }, []);
 
   const getVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API);
-    const json = await data.json();
-    // console.log(json.items);
-    setVideos(json.items);
+    try {
+      const data = await fetch(YOUTUBE_VIDEOS_API);
+      const json = await data.json();
+      console.log(json.items[0]);
+      setVideos(json.items);
+    } catch (error) {
+      console.error("Error fetching suggestions:", error);
+    }
   };
 
   return (

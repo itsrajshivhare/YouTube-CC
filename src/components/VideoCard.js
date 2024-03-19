@@ -21,13 +21,18 @@ const VideoCard = ({ info }) => {
   const viewCount = formatViewCount(statistics.viewCount);
 
   return (
-    <div className="p-2 m-2 bg-white w-60">
+    <div className="p-2 m-2 bg-white w-60 cursor-pointer">
       <img className="rounded-lg" alt="thumbnail" src={thumbnails.medium.url} />
       <ul>
-        <li className="font-bold text-sm font-sans py-2 truncate">{title}</li>
-        <li className="text-xs text-gray-600">{channelTitle}</li>
-        <li className="text-xs text-gray-600">
-          {viewCount} views • {timeAgo(publishedAt)}
+        <li
+          className="text-sm py-2 truncate font-semibold"
+          style={{ WebkitBoxOrient: "vertical" }}
+        >
+          {title}
+        </li>
+        <li className="text-xs text-gray-600 font-medium">{channelTitle}</li>
+        <li className="text-xs text-gray-600 font-medium">
+          {viewCount} • {timeAgo(publishedAt)}
         </li>
       </ul>
     </div>
