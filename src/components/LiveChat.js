@@ -57,14 +57,16 @@ const LiveChat = ({ videoId }) => {
         className="w-full p-2 ml-4 border border-gray-300 rounded-md flex items-center justify-center"
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(
-            addMessage({
-              name: "@rajaryaman26",
-              message: liveMessage,
-              image:
-                "https://media.licdn.com/dms/image/D4D03AQFTA94cVuZc9Q/profile-displayphoto-shrink_400_400/0/1687715196065?e=1716422400&v=beta&t=sSvdBVl38axQZePBNiojuOmpepi-a2kPVyD_XqVBcdk",
-            })
-          );
+          if (liveMessage != "") {
+            dispatch(
+              addMessage({
+                name: "@rajaryaman26",
+                message: liveMessage,
+                image:
+                  "https://media.licdn.com/dms/image/D4D03AQFTA94cVuZc9Q/profile-displayphoto-shrink_400_400/0/1687715196065?e=1716422400&v=beta&t=sSvdBVl38axQZePBNiojuOmpepi-a2kPVyD_XqVBcdk",
+              })
+            );
+          }
           setLiveMessage("");
         }}
       >

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   const dispatch = useDispatch();
@@ -32,8 +33,7 @@ const Head = () => {
 
   const getSearchSuggestion = async () => {
     try {
-      const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-      const data = await fetch(proxyUrl + YOUTUBE_SEARCH_API + searchQuery);
+      const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
       const json = await data.json();
       setSuggestionsList([...json[1]]);
 
@@ -53,9 +53,8 @@ const Head = () => {
   };
 
   const handleInputChange = (e) => {
-    const { value } = e.target;
-    setSearchQuery(value);
-    setShowSuggestions(value !== "");
+    setSearchQuery(e.target.value);
+    setShowSuggestions(e.target.value !== "");
   };
 
   // const handleSuggestionClick = (suggestion) => {
@@ -94,16 +93,20 @@ const Head = () => {
             <IoSearchOutline className="h-5 w-10 mr-2" />
           </button>
         </div>
+
         {showSuggestions && (
           <div className="absolute z-10 bg-white border border-gray-300 mt-1 w-1/2 rounded-b-lg shadow-lg">
-            {suggestionsList.map((suggestion, index) => (
-              <div
-                key={index}
-                className="p-2 cursor-pointer hover:bg-gray-100 flex items-center"
+            {suggestionsList.map((suggestion, id) => (
+              <Link
+                key={id}
+                to={"/results?search_query=" + suggestion}
+                onClick={() => setShowSuggestions(false)}
               >
-                <IoSearchOutline className="h-5 w-5 mr-2" />
-                {suggestion}
-              </div>
+                <div className="p-2 cursor-pointer hover:bg-gray-100 flex items-center">
+                  <IoSearchOutline className="h-5 w-5 mr-2" />
+                  {suggestion}
+                </div>
+              </Link>
             ))}
           </div>
         )}

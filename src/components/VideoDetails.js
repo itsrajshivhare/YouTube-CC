@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BiLike } from "react-icons/bi";
-import { BiDislike } from "react-icons/bi";
+import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from "react-icons/bi";
 
 const formatDate = (publishedAt) => {
   const date = new Date(publishedAt);
@@ -24,6 +23,9 @@ const formatViewCount = (count) => {
 const VideoDetails = ({ videoId }) => {
   const [videoData, setVideoData] = useState();
   const [channelData, setChannelData] = useState();
+
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
 
   useEffect(() => {
     getVideoData(videoId);
@@ -53,10 +55,20 @@ const VideoDetails = ({ videoId }) => {
     }
   };
 
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+    setIsDisliked(false);
+  };
+
+  const handleDislikeClick = () => {
+    setIsDisliked(!isDisliked);
+    setIsLiked(false);
+  };
+
   return (
     <div className="ml-[4.5rem] pr-4 max-w-[888px]">
       <div className="flex flex-col">
-        {/* First */}
+        {/* TITLE OF VIDEO */}
 
         <div>
           <span className="font-bold text-lg">
@@ -81,20 +93,45 @@ const VideoDetails = ({ videoId }) => {
               subscribers
             </span>
           </div>
+
           <button className="ml-2 px-3 py-1 text-white bg-black rounded-full text-xs cursor-pointer">
             Subscriber
           </button>
-          <div className="ml-64 px-2 flex items-center border bg-gray-100 rounded-3xl">
-            <BiLike className="ml-4 mr-2 text-xl cursor-pointer" />
-            <span className="mr-2 text-sm">
+
+          <div className="ml-36 px-2 flex items-center border bg-gray-100 rounded-3xl">
+            {isLiked ? (
+              <BiSolidLike
+                className="ml-4 mr-2 text-xl cursor-pointer"
+                onClick={handleLikeClick}
+              />
+            ) : (
+              <BiLike
+                className="ml-4 mr-2 text-xl cursor-pointer"
+                onClick={handleLikeClick}
+              />
+            )}
+
+            <span className="mr-2 text-sm font-semibold">
               {formatViewCount(videoData?.statistics?.likeCount)}
             </span>
+
             <div className="border-l border-gray-200 h-8"></div>
-            <BiDislike className="text-xl mx-4 cursor-pointer" />
+
+            {isDisliked ? (
+              <BiSolidDislike
+                className="text-xl mx-4 cursor-pointer"
+                onClick={handleDislikeClick}
+              />
+            ) : (
+              <BiDislike
+                className="text-xl mx-4 cursor-pointer"
+                onClick={handleDislikeClick}
+              />
+            )}
           </div>
         </div>
 
-        {/* Third */}
+        {/* DESCRIPTION OF VIDEO */}
 
         <div className="px-2 pb-2 bg-gray-200 rounded-lg">
           <span className="text-xs font-semibold">
@@ -102,8 +139,8 @@ const VideoDetails = ({ videoId }) => {
             {formatDate(videoData?.snippet?.publishedAt)}
           </span>
           <p className="text-xs font-medium text-gray-600">
-            {videoData?.snippet?.description.split("\n").map((line, index) => (
-              <p key={index} className="text-xs font-medium text-gray-600">
+            {videoData?.snippet?.description.split("\n").map((line, id) => (
+              <p key={id} className="text-xs font-medium text-gray-600">
                 {line}
                 <br />
               </p>

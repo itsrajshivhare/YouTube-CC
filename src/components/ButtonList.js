@@ -3,15 +3,14 @@ import Button from "./Button";
 
 const list = [
   "All",
-  "Gaming",
+  "Shorts",
   "Ghosts",
   "Web Development",
   "Music",
   "Podcasts",
-  "Mixes",
-  "Chess",
-  "News",
-  "Cricket",
+  "Live",
+  "Recently uploaded",
+  "Over 20 minutes",
 ];
 
 const ButtonList = () => {

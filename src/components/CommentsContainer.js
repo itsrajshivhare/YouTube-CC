@@ -84,33 +84,35 @@ const commentData = [
     replies: [],
   },
   {
-    name: "Tamia",
-    text: "Loved it!",
-    replies: [],
-  },
-  {
-    name: "Anjali",
-    text: "Not my cup of tea.",
-    replies: [],
-  },
-  {
     name: "Aditi",
     text: "So-so.",
-    replies: [],
+    replies: [
+      {
+        name: "Tamia",
+        text: "Loved it!",
+        replies: [],
+      },
+      {
+        name: "Anjali",
+        text: "Not my cup of tea.",
+        replies: [
+          {
+            name: "Ajay",
+            text: "I expected more.",
+            replies: [],
+          },
+          {
+            name: "Ambar",
+            text: "Incredible!",
+            replies: [],
+          },
+        ],
+      },
+    ],
   },
   {
     name: "Ananya",
     text: "This made my day!",
-    replies: [],
-  },
-  {
-    name: "Ajay",
-    text: "I expected more.",
-    replies: [],
-  },
-  {
-    name: "Ambar",
-    text: "Incredible!",
     replies: [],
   },
 ];
