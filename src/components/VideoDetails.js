@@ -76,7 +76,7 @@ const VideoDetails = ({ videoId }) => {
           </span>
         </div>
 
-        {/* Second */}
+        {/* Channel details and buttons */}
 
         <div className="py-3 flex">
           <img
