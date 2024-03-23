@@ -15,7 +15,7 @@ const SearchVideoCard = () => {
       if (query.trim() === "") return;
       const data = await fetch(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${query}&maxResults=20&key=` +
-          process.env.REACT_APP_GOOGLE_API_KEY
+          "AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg"
       );
       const json = await data.json();
       console.log(json);
@@ -28,7 +28,7 @@ const SearchVideoCard = () => {
 
       const data1 = await fetch(
         `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelIds}&key=` +
-          process.env.REACT_APP_GOOGLE_API_KEY
+          "AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg"
       );
       const json1 = await data1.json();
       setChannelData(

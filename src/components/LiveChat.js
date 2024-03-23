@@ -16,7 +16,7 @@ const LiveChat = ({ videoId }) => {
     const i = setInterval(async () => {
       // API POLLING
       const data = await fetch(
-        `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${process.env.REACT_APP_GOOGLE_API_KEY}&maxResults=90`
+        `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg&maxResults=90`
       );
       const json = await data.json();
 
@@ -57,7 +57,7 @@ const LiveChat = ({ videoId }) => {
         className="w-full p-2 ml-4 border border-gray-300 rounded-md flex items-center justify-center"
         onSubmit={(e) => {
           e.preventDefault();
-          if (liveMessage != "") {
+          if (liveMessage !== "") {
             dispatch(
               addMessage({
                 name: "@rajaryaman26",

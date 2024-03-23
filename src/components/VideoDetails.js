@@ -36,7 +36,7 @@ const VideoDetails = ({ videoId }) => {
       // Video data
       const data = await fetch(
         `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=` +
-          process.env.REACT_APP_GOOGLE_API_KEY
+          "AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg"
       );
       const json = await data.json();
       setVideoData(json.items[0]);
@@ -46,7 +46,7 @@ const VideoDetails = ({ videoId }) => {
 
       const data1 = await fetch(
         `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=` +
-          process.env.REACT_APP_GOOGLE_API_KEY
+          "AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg"
       );
       const json1 = await data1.json();
       setChannelData(json1.items[0]);
