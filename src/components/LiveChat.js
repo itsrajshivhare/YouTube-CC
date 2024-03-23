@@ -79,7 +79,22 @@ const LiveChat = ({ videoId }) => {
             setLiveMessage(e.target.value);
           }}
         />
-        <VscSend className="mx-4 text-xl text-gray-500 cursor-pointer" />
+        <VscSend
+          className="mx-4 text-xl text-gray-500 cursor-pointer"
+          onClick={() => {
+            if (liveMessage !== "") {
+              dispatch(
+                addMessage({
+                  name: "@rajaryaman26",
+                  message: liveMessage,
+                  image:
+                    "https://media.licdn.com/dms/image/D4D03AQFTA94cVuZc9Q/profile-displayphoto-shrink_400_400/0/1687715196065?e=1716422400&v=beta&t=sSvdBVl38axQZePBNiojuOmpepi-a2kPVyD_XqVBcdk",
+                })
+              );
+            }
+            setLiveMessage("");
+          }}
+        />
       </form>
     </>
   );

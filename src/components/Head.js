@@ -89,9 +89,17 @@ const Head = () => {
             value={searchQuery}
             onChange={handleInputChange}
           />
-          <button className="p-1.5 rounded-r-full flex items-center bg-gray-100 hover:bg-gray-300 text-gray-800 border border-gray-300">
-            <IoSearchOutline className="h-5 w-10 mr-2" />
-          </button>
+          {searchQuery.trim() !== "" ? (
+            <Link to={"/results?search_query=" + searchQuery}>
+              <button className="p-1.5 rounded-r-full flex items-center bg-gray-100 hover:bg-gray-300 text-gray-800 border border-gray-300">
+                <IoSearchOutline className="h-5 w-10 mr-2" />
+              </button>
+            </Link>
+          ) : (
+            <button className="p-1.5 rounded-r-full flex items-center bg-gray-100 hover:bg-gray-300 text-gray-800 border border-gray-300">
+              <IoSearchOutline className="h-5 w-10 mr-2" />
+            </button>
+          )}
         </div>
 
         {showSuggestions && (
