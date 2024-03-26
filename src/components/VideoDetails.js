@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { formatDate, formatCount, formatViewCount } from "../utils/helper";
+import { MY_GOOGLE_API_KEY } from "../utils/constants";
 
 const VideoDetails = ({ videoId }) => {
   const [videoData, setVideoData] = useState();
@@ -19,7 +20,7 @@ const VideoDetails = ({ videoId }) => {
       // Video data
       const data = await fetch(
         `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=` +
-          "AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg"
+          MY_GOOGLE_API_KEY
       );
       const json = await data.json();
       setVideoData(json.items[0]);
@@ -29,7 +30,7 @@ const VideoDetails = ({ videoId }) => {
 
       const data1 = await fetch(
         `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=` +
-          "AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg"
+          MY_GOOGLE_API_KEY
       );
       const json1 = await data1.json();
       setChannelData(json1.items[0]);

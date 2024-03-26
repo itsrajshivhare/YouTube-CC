@@ -3,6 +3,7 @@ import ChatMessage from "./ChatMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../utils/chatSlice";
 import { VscSend } from "react-icons/vsc";
+import { MY_GOOGLE_API_KEY } from "../utils/constants";
 
 const LiveChat = ({ videoId }) => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const LiveChat = ({ videoId }) => {
     const i = setInterval(async () => {
       // API POLLING
       const data = await fetch(
-        `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg&maxResults=90`
+        `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${MY_GOOGLE_API_KEY}-bg&maxResults=90`
       );
       const json = await data.json();
 

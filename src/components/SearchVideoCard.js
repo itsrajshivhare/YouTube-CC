@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import timeAgo from "../utils/timeAgo";
 import { Link, useSearchParams } from "react-router-dom";
+import { MY_GOOGLE_API_KEY } from "../utils/constants";
 
 const SearchVideoCard = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -15,7 +16,7 @@ const SearchVideoCard = () => {
       if (query.trim() === "") return;
       const data = await fetch(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${query}&maxResults=20&key=` +
-          "AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg"
+          MY_GOOGLE_API_KEY
       );
       const json = await data.json();
       console.log(json);
@@ -28,7 +29,7 @@ const SearchVideoCard = () => {
 
       const data1 = await fetch(
         `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelIds}&key=` +
-          "AIzaSyADU0dB12ejgTrjz25tH0CxciWBtIdB-bg"
+          MY_GOOGLE_API_KEY
       );
       const json1 = await data1.json();
       setChannelData(
