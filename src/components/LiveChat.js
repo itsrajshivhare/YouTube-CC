@@ -17,7 +17,7 @@ const LiveChat = ({ videoId }) => {
     const i = setInterval(async () => {
       // API POLLING
       const data = await fetch(
-        `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${MY_GOOGLE_API_KEY}-bg&maxResults=90`
+        `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${MY_GOOGLE_API_KEY}&maxResults=90`
       );
       const json = await data.json();
 
