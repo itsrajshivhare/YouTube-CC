@@ -1,15 +1,6 @@
 import React from "react";
 import timeAgo from "../utils/timeAgo";
-
-const formatViewCount = (count) => {
-  if (count >= 1e6) {
-    return (count / 1e6).toFixed(1) + "M views";
-  } else if (count >= 1e3) {
-    return (count / 1e3).toFixed(1) + "K views";
-  } else {
-    return count + " views";
-  }
-};
+import { formatViewCount } from "../utils/helper";
 
 const VideoCard = ({ info }) => {
   if (!info) {
@@ -32,7 +23,7 @@ const VideoCard = ({ info }) => {
         </li>
         <li className="text-xs text-gray-600 font-medium">{channelTitle}</li>
         <li className="text-xs text-gray-600 font-medium">
-          {viewCount} • {timeAgo(publishedAt)}
+          {viewCount} views • {timeAgo(publishedAt)}
         </li>
       </ul>
     </div>
